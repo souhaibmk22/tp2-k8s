@@ -1,0 +1,17 @@
+type Ordonnance{
+    idOrdonnance: ID!    dateOrdonnance: String!
+    medicaments: [Medicament!]!    idPatient: ID!
+    idRemboursement: ID!
+}
+
+type Medicament {
+    idMed: ID!      nom: String!
+    duree: Int!    dosage: String!
+    cout: Float!      ordonnance: Ordonnance
+}
+
+type Query {
+    getOrdonnanceByIdPatient(idPatient: ID!): [Ordonnance]
+
+
+  }
