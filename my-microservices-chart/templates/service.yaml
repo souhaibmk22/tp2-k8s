@@ -1,0 +1,13 @@
+{{- range .Values.services }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ms-{{ .name }}
+spec:
+  selector:
+    app: ms-{{ .name }}
+  ports:
+    - port: {{ .servicePort }}
+      targetPort: {{ .containerPort }}
+{{- end }}

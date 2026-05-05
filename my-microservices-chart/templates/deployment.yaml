@@ -1,0 +1,23 @@
+{{- range .Values.services }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-{{ .name }}
+spec:
+  replicas: {{ $.Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: ms-{{ .name }}
+  template:
+    metadata:
+      labels:
+        app: ms-{{ .name }}
+    spec:
+      containers:
+        - name: {{ .name }}
+          image: {{ .image }}
+          imagePullPolicy: {{ $.Values.imagePullPolicy }}
+          ports:
+            - containerPort: {{ .containerPort }}
+{{- end }}

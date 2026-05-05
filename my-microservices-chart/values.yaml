@@ -1,0 +1,18 @@
+# Configuration globale (s'applique à tous si non surchargé)
+replicaCount: 1
+imagePullPolicy: Never
+
+# Définition de chaque microservice
+services:
+  - name: patient
+    containerPort: 8081
+    servicePort: 8081
+    image: ms-patient-image
+  - name: ordonnance
+    containerPort: 8082
+    servicePort: 8082
+    image: ms-ordonnance-image
+  - name: remboursement
+    containerPort: 8083
+    servicePort: 8083
+    image: ms-remboursement-image
