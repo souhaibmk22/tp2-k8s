@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-ordonnance
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms-ordonnance
+  template:
+    metadata:
+      labels:
+        app: ms-ordonnance
+    spec:
+      containers:
+      - name: ms-ordonnance-container
+        image: ms-ordonnance-image
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8082
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ms-ordonnance
+spec:
+  selector:
+    app: ms-ordonnance
+  ports:
+    - port: 8082
+      targetPort: 8082

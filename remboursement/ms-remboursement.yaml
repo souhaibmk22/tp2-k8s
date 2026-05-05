@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-remboursement
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms-remboursement
+  template:
+    metadata:
+      labels:
+        app: ms-remboursement
+    spec:
+      containers:
+      - name: ms-remboursement-container
+        image: ms-remboursement-image
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8083
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ms-remboursement
+spec:
+  selector:
+    app: ms-remboursement
+  ports:
+    - port: 8083
+      targetPort: 8083
+
