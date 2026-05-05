@@ -16,7 +16,7 @@ spec:
       containers:
       - name: ms-patient-container
         image: ms-patient-image
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Never
         ports:
         - containerPort: 8081
         env:
@@ -43,7 +43,7 @@ spec:
       containers:
       - name: ms-ordonnance-container
         image: ms-ordonnance-image
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Never
         ports:
         - containerPort: 8082
         env:
@@ -70,7 +70,7 @@ spec:
       containers:
       - name: ms-remboursement-container
         image: ms-remboursement-image
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Never
         ports:
         - containerPort: 8083
 ---
