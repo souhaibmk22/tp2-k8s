@@ -1,0 +1,44 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ms-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: ms-patient
+            port:
+              number: 8081
+      - path: /patients
+        pathType: Prefix
+        backend:
+          service:
+            name: ms-patient
+            port:
+              number: 8081
+      - path: /antecedentMedicals
+        pathType: Prefix
+        backend:
+          service:
+            name: ms-patient
+            port:
+              number: 8081
+      - path: /ordonnance-graphql
+        pathType: Prefix
+        backend:
+          service:
+            name: ms-ordonnance
+            port:
+              number: 8082
+      - path: /remboursement-graphql
+        pathType: Prefix
+        backend:
+          service:
+            name: ms-remboursement
+            port:
+              number: 8083
